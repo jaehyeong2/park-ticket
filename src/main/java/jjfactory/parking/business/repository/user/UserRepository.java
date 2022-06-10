@@ -1,4 +1,4 @@
-package jjfactory.parking.business.repository;
+package jjfactory.parking.business.repository.user;
 
 import jjfactory.parking.business.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
