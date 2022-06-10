@@ -1,4 +1,4 @@
-package jjfactory.parking.global.config;
+package jjfactory.parking.global.config.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
