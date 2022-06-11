@@ -1,4 +1,4 @@
-package jjfactory.parking.business.dto;
+package jjfactory.parking.business.dto.user;
 
 import jjfactory.parking.business.domain.user.User;
 import lombok.AllArgsConstructor;
@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class UserDto {
+public class UserResponse {
     private String name;
     private String username;
     private String password;
     private String email;
     private String phone;
 
-    public UserDto(User user) {
+    public UserResponse(User user) {
         this.name = name;
         this.username = username;
         this.password = password;

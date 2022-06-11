@@ -3,6 +3,7 @@ package jjfactory.parking.business.domain.message;
 import jjfactory.parking.business.domain.user.User;
 import jjfactory.parking.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,4 +25,15 @@ public class Message extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private ReadStatus readStatus;
+
+    @Lob
+    private String content;
+
+    @Builder
+    public Message(User sender, User receiver, ReadStatus readStatus, String content) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.readStatus = readStatus;
+        this.content = content;
+    }
 }

@@ -1,5 +1,6 @@
 package jjfactory.parking.business.domain.history;
 
+import jjfactory.parking.business.domain.ticket.Ticket;
 import jjfactory.parking.business.domain.user.User;
 import jjfactory.parking.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
@@ -18,8 +19,13 @@ public class BuyHistory extends BaseTimeEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    private Ticket ticket;
+
+    @JoinColumn(name = "buyer_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private User buyer;
 
+    @JoinColumn(name = "seller_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private User seller;
 

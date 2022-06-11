@@ -9,7 +9,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -29,7 +28,7 @@ public class JwtTokenProvider {
     private long refreshTokenValidMillisecond = 1000L * 60 * 60 * 24 * 7; // 7일
 
     private final RedisTemplate redisTemplate;
-    private final UserDetailsService userDetailsService;
+    private final PrincipalDetailsService principalDetailsService;
 
     @PostConstruct
     protected void init() {
@@ -61,7 +60,7 @@ public class JwtTokenProvider {
 
     // jwt 토큰으로 인증 정보 조회
     public Authentication getAuthentication(String token) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(this.getUserPk(token));
+        UserDetails userDetails = principalDetailsService.loadUserByUsername(this.getUserPk(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
