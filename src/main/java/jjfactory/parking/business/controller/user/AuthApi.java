@@ -1,7 +1,9 @@
 package jjfactory.parking.business.controller.user;
 
 
-import jjfactory.parking.business.dto.user.UserDto;
+import jjfactory.parking.business.dto.user.req.LoginRequest;
+import jjfactory.parking.business.dto.user.req.UserDto;
+import jjfactory.parking.business.dto.user.res.LoginResponse;
 import jjfactory.parking.business.service.user.AuthService;
 import jjfactory.parking.global.dto.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -19,5 +21,10 @@ public class AuthApi {
     @PostMapping("/signup")
     public ApiResponse<String> signUp(@RequestBody UserDto dto){
         return new ApiResponse<>(authService.signUp(dto));
+    }
+
+    @PostMapping("/login")
+    public ApiResponse<LoginResponse> login(@RequestBody LoginRequest dto){
+        return new ApiResponse<>(authService.login(dto));
     }
 }

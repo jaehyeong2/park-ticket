@@ -1,4 +1,4 @@
-package jjfactory.parking.business.dto.user;
+package jjfactory.parking.business.dto.user.res;
 
 import jjfactory.parking.business.domain.user.User;
 import lombok.AllArgsConstructor;

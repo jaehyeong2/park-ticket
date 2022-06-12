@@ -1,7 +1,7 @@
 package jjfactory.parking.business.service.user;
 
 import jjfactory.parking.business.domain.user.User;
-import jjfactory.parking.business.dto.user.UserResponse;
+import jjfactory.parking.business.dto.user.res.UserResponse;
 import jjfactory.parking.business.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

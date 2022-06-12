@@ -1,6 +1,6 @@
 package jjfactory.parking.business.domain.user;
 
-import jjfactory.parking.business.dto.user.UserDto;
+import jjfactory.parking.business.dto.user.req.UserDto;
 import jjfactory.parking.global.entity.BaseTimeEntity;
 import jjfactory.parking.global.entity.DeleteStatus;
 import lombok.AccessLevel;
@@ -62,5 +62,9 @@ public class User extends BaseTimeEntity {
 
     public void deleteUser() {
         this.deleteStatus = DeleteStatus.DELETED;
+    }
+
+    public void updateRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }
