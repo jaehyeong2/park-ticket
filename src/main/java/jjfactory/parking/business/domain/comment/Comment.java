@@ -2,6 +2,7 @@ package jjfactory.parking.business.domain.comment;
 
 import jjfactory.parking.business.domain.ticket.Ticket;
 import jjfactory.parking.business.domain.user.User;
+import jjfactory.parking.business.dto.comment.CommentDto;
 import jjfactory.parking.global.entity.BaseTimeEntity;
 import jjfactory.parking.global.entity.DeleteStatus;
 import lombok.AccessLevel;
@@ -50,5 +51,13 @@ public class Comment extends BaseTimeEntity {
         this.childList = childList;
     }
 
-
+    public static Comment create(CommentDto dto,User user,Comment parent,Ticket ticket){
+        return builder()
+                .content(dto.getContent())
+                .deleteStatus(DeleteStatus.NON_DELETED)
+                .user(user)
+                .parent(parent)
+                .ticket(ticket)
+                .build();
+    }
 }
