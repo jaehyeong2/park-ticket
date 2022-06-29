@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,7 +22,10 @@ public class User extends BaseTimeEntity {
     private Long id;
 
     private String name;
+    @Comment("아이디")
     private String username;
+    @Comment("닉네임")
+    private String nickname;
     private String password;
     private String phone;
     private String email;

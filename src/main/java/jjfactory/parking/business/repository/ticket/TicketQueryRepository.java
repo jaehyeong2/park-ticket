@@ -26,6 +26,9 @@ public class TicketQueryRepository {
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        return new PageImpl<>(tickets,pageable,tickets.size());
+        int total = queryFactory.select(Projections.constructor(TicketResponse.class, ticket))
+                .fetch().size();
+
+        return new PageImpl<>(tickets,pageable,total);
     }
 }
