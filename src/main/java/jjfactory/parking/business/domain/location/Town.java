@@ -22,16 +22,28 @@ public class Town extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Region region;
 
+    private Boolean isView;
+
     @Builder
-    public Town(String name, Region region) {
+    public Town(String name, Region region,Boolean isView) {
         this.name = name;
         this.region = region;
+        this.isView = isView;
+    }
+
+    public void delete() {
+        isView = false;
+    }
+
+    public void changeName(String name) {
+        this.name = name;
     }
 
     public static Town create(TownDto dto){
         return builder()
                 .name(dto.getName())
                 .region(dto.getRegion())
+                .isView(true)
                 .build();
     }
 
