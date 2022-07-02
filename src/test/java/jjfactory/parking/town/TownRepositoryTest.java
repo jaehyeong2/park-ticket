@@ -1,18 +1,14 @@
 package jjfactory.parking.town;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jjfactory.parking.business.domain.location.QTown;
 import jjfactory.parking.business.domain.location.Region;
 import jjfactory.parking.business.domain.location.Town;
-import jjfactory.parking.business.repository.town.TownRepository;
-import org.assertj.core.api.Assertions;
+import jjfactory.parking.business.repository.location.TownRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
 import java.util.Arrays;

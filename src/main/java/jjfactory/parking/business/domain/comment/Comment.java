@@ -60,4 +60,12 @@ public class Comment extends BaseTimeEntity {
                 .ticket(ticket)
                 .build();
     }
+
+    public void update(String content) {
+        this.content = content;
+    }
+
+    public void delete() {
+        this.deleteStatus = DeleteStatus.DELETED;
+    }
 }

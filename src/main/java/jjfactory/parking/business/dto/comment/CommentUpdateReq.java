@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class CommentDto {
+public class CommentUpdateReq {
+    private Long commentId;
     private String content;
-    private Long parentId;
 }

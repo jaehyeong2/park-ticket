@@ -1,11 +1,11 @@
-package jjfactory.parking.business.service.town;
+package jjfactory.parking.business.service.location;
 
 import jjfactory.parking.business.domain.location.Town;
 import jjfactory.parking.business.dto.location.TownDto;
 import jjfactory.parking.business.dto.location.TownNameReq;
 import jjfactory.parking.business.dto.location.TownRes;
-import jjfactory.parking.business.repository.town.TownQueryRepository;
-import jjfactory.parking.business.repository.town.TownRepository;
+import jjfactory.parking.business.repository.location.TownQueryRepository;
+import jjfactory.parking.business.repository.location.TownRepository;
 import jjfactory.parking.global.handler.ex.BusinessException;
 import jjfactory.parking.global.handler.ex.ErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Transactional

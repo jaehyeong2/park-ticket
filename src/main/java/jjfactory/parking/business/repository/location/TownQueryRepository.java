@@ -1,8 +1,7 @@
-package jjfactory.parking.business.repository.town;
+package jjfactory.parking.business.repository.location;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jjfactory.parking.business.domain.location.QTown;
 import jjfactory.parking.business.dto.location.TownRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,29 +38,14 @@ class TicketServiceTest {
         User user = User.builder().name("이재형").build();
         userRepository.save(user);
 
+        List<Ticket> tickets = new ArrayList<>();
+
         for (int i = 0; i < 15; i++) {
             Ticket ticket = Ticket.builder().title("티켓 1 판매").user(user).build();
-            ticketRepository.save(ticket);
+            tickets.add(ticket);
         }
 
-//        Ticket ticket1 = Ticket.builder().title("티켓 1 판매").user(user).build();
-//        Ticket ticket2 = Ticket.builder().title("티켓 2 판매").user(user).build();
-//        Ticket ticket3 = Ticket.builder().title("티켓 3 판매").user(user).build();
-//        Ticket ticket4 = Ticket.builder().title("티켓 4 판매").user(user).build();
-//        Ticket ticket5 = Ticket.builder().title("티켓 5 판매").user(user).build();
-//        Ticket ticket6 = Ticket.builder().title("티켓 1 판매").user(user).build();
-//        Ticket ticket7 = Ticket.builder().title("티켓 2 판매").user(user).build();
-//        Ticket ticket8 = Ticket.builder().title("티켓 3 판매").user(user).build();
-//        Ticket ticket9 = Ticket.builder().title("티켓 4 판매").user(user).build();
-//        Ticket ticket10 = Ticket.builder().title("티켓 5 판매").user(user).build();
-//        Ticket ticket11 = Ticket.builder().title("티켓 1 판매").user(user).build();
-//        Ticket ticket2 = Ticket.builder().title("티켓 2 판매").user(user).build();
-//        Ticket ticket3 = Ticket.builder().title("티켓 3 판매").user(user).build();
-//        Ticket ticket4 = Ticket.builder().title("티켓 4 판매").user(user).build();
-//        Ticket ticket5 = Ticket.builder().title("티켓 5 판매").user(user).build();
-//
-//        List<Ticket> tickets = Arrays.asList(ticket1, ticket2, ticket3, ticket4, ticket5);
-//        ticketRepository.saveAll(tickets);
+        ticketRepository.saveAll(tickets);
 
         Long totalCount = ticketService.findTickets(1).getTotalCount();
         int totalPage = ticketService.findTickets(1).getTotalPage();

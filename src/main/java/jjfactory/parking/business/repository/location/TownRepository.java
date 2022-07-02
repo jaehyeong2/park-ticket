@@ -1,8 +1,6 @@
-package jjfactory.parking.business.repository.town;
+package jjfactory.parking.business.repository.location;
 
-import jjfactory.parking.business.domain.location.Region;
 import jjfactory.parking.business.domain.location.Town;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TownRepository extends JpaRepository<Town,Long> {
