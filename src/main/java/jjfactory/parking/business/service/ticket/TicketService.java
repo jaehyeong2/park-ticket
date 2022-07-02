@@ -61,7 +61,7 @@ public class TicketService {
     @Transactional(readOnly = true)
     private Ticket getTicket(Long id) {
         Ticket ticket = ticketRepository.findById(id).orElseThrow(() -> {
-            throw new NoSuchElementException("조회실패");
+            throw new BusinessException(ErrorCode.ENTITY_NOT_FOUND);
         });
         return ticket;
     }
@@ -69,7 +69,7 @@ public class TicketService {
     @Transactional(readOnly = true)
     private User getUser(TicketDto dto) {
         User user = userRepository.findById(dto.getUserId()).orElseThrow(() -> {
-            throw new NoSuchElementException("조회실패");
+            throw new BusinessException(ErrorCode.ENTITY_NOT_FOUND);
         });
         return user;
     }

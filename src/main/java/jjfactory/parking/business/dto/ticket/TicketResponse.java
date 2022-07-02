@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class TicketResponse {
-    private String content;
     private String title;
+    private String content;
     private int price;
     private Long userId;
 
     public TicketResponse(Ticket ticket) {
-        this.content = ticket.getContent();
         this.title = ticket.getContent();
+        this.content = ticket.getContent();
         this.price = ticket.getPrice();
         this.userId = ticket.getUser().getId();
     }

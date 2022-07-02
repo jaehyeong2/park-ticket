@@ -9,8 +9,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
 import java.util.Arrays;
@@ -20,6 +22,7 @@ import static jjfactory.parking.business.domain.location.QTown.*;
 import static org.assertj.core.api.Assertions.*;
 
 @DataJpaTest
+//@ExtendWith(SpringExtension.class)
 public class TownRepositoryTest {
 
     @Autowired
@@ -51,7 +54,7 @@ public class TownRepositoryTest {
 
     @Test
     @DisplayName("쿼리dsl region으로 찾기 테스트")
-    void select(){
+    void selectByRegion(){
         Town town1 = Town.builder().region(Region.전라남도).name("무슨무슨대로 무슨길").build();
         Town town2 = Town.builder().region(Region.전라남도).name("무슨대로 2번길").build();
         Town town3 = Town.builder().region(Region.전라남도).name("무슨대로 3번길").build();
@@ -60,9 +63,10 @@ public class TownRepositoryTest {
         List<Town> towns = Arrays.asList(town1, town2, town3, town4);
         townRepository.saveAll(towns);
 
-        List<Town> result = queryFactory.selectFrom(town).where(town.region.eq(Region.경상북도)).fetch();
+        Town findTown = queryFactory.selectFrom(town).where(town.region.eq(Region.경상북도)).fetchOne();
+        List<Town> result = queryFactory.selectFrom(town).where(town.region.eq(Region.전라남도)).fetch();
 
-        assertThat(result.size()).isEqualTo(1);
-        assertThat(result).contains(town4);
+        assertThat(findTown).isEqualTo(town4);
+        assertThat(result.size()).isEqualTo(3);
     }
 }

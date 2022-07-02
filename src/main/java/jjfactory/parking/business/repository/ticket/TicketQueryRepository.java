@@ -19,15 +19,21 @@ public class TicketQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     public Page<TicketResponse> findTickets(Pageable pageable){
-        List<TicketResponse> tickets = queryFactory.select(Projections.constructor(TicketResponse.class, ticket))
+        List<TicketResponse> tickets = queryFactory.
+                select(Projections.constructor(TicketResponse.class,
+                        ticket.title.as("title"), ticket.content.as("content"),
+                        ticket.price.as("price"), ticket.user.id.as("userId")
+                        ))
                 .from(ticket)
                 .orderBy(ticket.createDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        int total = queryFactory.select(Projections.constructor(TicketResponse.class, ticket))
-                .fetch().size();
+        int total = queryFactory.select(Projections.constructor(TicketResponse.class,
+                        ticket.title.as("title"), ticket.content.as("content"),
+                        ticket.price.as("price"), ticket.user.id.as("userId")
+                )).from(ticket).fetch().size();
 
         return new PageImpl<>(tickets,pageable,total);
     }

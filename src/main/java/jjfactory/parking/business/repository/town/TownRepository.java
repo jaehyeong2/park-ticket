@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TownRepository extends JpaRepository<Town,Long> {
     Town findByName(String name);
-    Page<Town> findByRegion(Region region);
+//    Page<Town> findByRegion(Region region);
 }
