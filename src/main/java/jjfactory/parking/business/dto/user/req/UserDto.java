@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class UserDto {
     private String name;
     private String username;
+    private String nickname;
     private String password;
     private String email;
     private String phone;
@@ -18,6 +19,7 @@ public class UserDto {
     public UserDto(User user) {
         this.name = name;
         this.username = username;
+        this.nickname = nickname;
         this.password = password;
         this.email = email;
         this.phone = phone;

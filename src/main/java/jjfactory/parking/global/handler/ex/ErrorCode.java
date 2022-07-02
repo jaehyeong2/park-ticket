@@ -13,7 +13,8 @@ public enum ErrorCode {
     HANDLE_ACCESS_DENIED(403,  "권한이 없습니다."),
     HANDLE_INVALID_TOKEN(401,  "토큰이 없거나 올바르지 않습니다."),
     NOT_MATCH_PASSWORD(500,"아이디와 비밀번호를 확인 해 주세요."),
-    DUPLICATE_LOGIN_ID(500,"이미 존재하는 ID입니다")
+    DUPLICATE_LOGIN_ID(500,"이미 존재하는 ID입니다"),
+    DUPLICATE_NICKNAME(500,"이미 존재하는 ID입니다")
     ;
 
 

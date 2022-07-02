@@ -40,8 +40,9 @@ public class User extends BaseTimeEntity {
     private DeleteStatus deleteStatus;
 
     @Builder
-    public User(String name, String username, String password, String phone, String email, List<Role> roles, String refreshToken, DeleteStatus deleteStatus) {
+    public User(String name, String username, String password, String phone, String email, List<Role> roles, String refreshToken, DeleteStatus deleteStatus, String nickname) {
         this.name = name;
+        this.nickname = nickname;
         this.username = username;
         this.password = password;
         this.phone = phone;
@@ -54,6 +55,7 @@ public class User extends BaseTimeEntity {
     public static User create(UserDto dto, String password){
         return builder()
                 .username(dto.getUsername())
+                .nickname(dto.getNickname())
                 .name(dto.getName())
                 .deleteStatus(DeleteStatus.NON_DELETED)
                 .phone(dto.getPhone())

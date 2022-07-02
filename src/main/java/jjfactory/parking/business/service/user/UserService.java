@@ -3,6 +3,8 @@ package jjfactory.parking.business.service.user;
 import jjfactory.parking.business.domain.user.User;
 import jjfactory.parking.business.dto.user.res.UserResponse;
 import jjfactory.parking.business.repository.user.UserRepository;
+import jjfactory.parking.global.handler.ex.BusinessException;
+import jjfactory.parking.global.handler.ex.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -18,7 +20,7 @@ import java.util.stream.Collectors;
 @Transactional
 @Service
 public class UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Transactional(readOnly = true)
     public UserResponse findUserById(Long id){
@@ -36,6 +38,13 @@ public class UserService {
     public String deleteUser(Long id){
         User user = getUser(id);
         user.deleteUser();
+        return "Y";
+    }
+
+    @Transactional(readOnly = true)
+    public String checkDuplicateNickname(String nickname){
+        User user = userRepository.findByNickname(nickname);
+        if (user != null) throw new BusinessException(ErrorCode.DUPLICATE_NICKNAME);
         return "Y";
     }
 
