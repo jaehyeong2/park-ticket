@@ -46,4 +46,8 @@ public class Message extends BaseTimeEntity {
                 .sender(sender)
                 .build();
     }
+
+    public void updateContent(String content) {
+        this.content = content;
+    }
 }
